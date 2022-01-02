@@ -1,4 +1,4 @@
-package fr.hndgy.recipeapp.entities;
+package fr.hndgy.recipeapp.domain;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -17,7 +17,8 @@ public class Recipe {
     private String url;
     private String directions;
     //TODO : add field
-    //private Difficulty difficulty;
+    @Enumerated(value = EnumType.ORDINAL)
+    private Difficulty difficulty;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "recipe")
     private Set<Ingredient> ingredients;
@@ -26,6 +27,14 @@ public class Recipe {
 
     @OneToOne(cascade = CascadeType.ALL) // the reccipe own the note
     private Notes notes;
+
+    @ManyToMany
+    @JoinTable(
+            name = "recipe_category",
+            joinColumns = @JoinColumn(name = "recipe_id"),
+            inverseJoinColumns = @JoinColumn(name="category_id")
+    ) //By default (without this line), jpa will create 2 relationship tables
+    private Set<Category> categories;
 
 
     public Long getId() {
@@ -106,5 +115,29 @@ public class Recipe {
 
     public void setNotes(Notes notes) {
         this.notes = notes;
+    }
+
+    public Difficulty getDifficulty() {
+        return difficulty;
+    }
+
+    public void setDifficulty(Difficulty difficulty) {
+        this.difficulty = difficulty;
+    }
+
+    public Set<Ingredient> getIngredients() {
+        return ingredients;
+    }
+
+    public void setIngredients(Set<Ingredient> ingredients) {
+        this.ingredients = ingredients;
+    }
+
+    public Set<Category> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(Set<Category> categories) {
+        this.categories = categories;
     }
 }

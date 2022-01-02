@@ -1,4 +1,4 @@
-package fr.hndgy.recipeapp.entities;
+package fr.hndgy.recipeapp.domain;
 
 import javax.persistence.*;
 

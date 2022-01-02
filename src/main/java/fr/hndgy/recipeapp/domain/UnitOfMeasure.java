@@ -1,4 +1,4 @@
-package fr.hndgy.recipeapp.entities;
+package fr.hndgy.recipeapp.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,4 +12,6 @@ public class UnitOfMeasure {
     private Long id;
 
     private String description;
+
+
 }
