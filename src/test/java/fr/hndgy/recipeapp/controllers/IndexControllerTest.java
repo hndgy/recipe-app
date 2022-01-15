@@ -41,8 +41,8 @@ public class IndexControllerTest {
         recipe1.setId(1L);
         recipeSet.add(recipe1);
         Recipe recipe2 = new Recipe();
-        recipe1.setId(2L);
-        recipeSet.add(recipe1);
+        recipe2.setId(2L);
+        recipeSet.add(recipe2);
 
         when(recipeService.getRecipes()).thenReturn(recipeSet);
         ArgumentCaptor<Set<Recipe>> argumentCaptor = ArgumentCaptor.forClass(Set.class);
