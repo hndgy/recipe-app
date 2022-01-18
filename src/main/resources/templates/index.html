@@ -17,13 +17,14 @@
         <tr>
             <th>ID</th>
             <th>Description</th>
-
+            <th> Link</th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="recipe:${recipesList}">
             <td th:text="${recipe.id}"></td>
             <td th:text="${recipe.description}"></td>
+            <td ><a th:href="@{'/recipe/show/'+ ${recipe.id}}">View</a></td>
 
         </tr>
         </tbody>
